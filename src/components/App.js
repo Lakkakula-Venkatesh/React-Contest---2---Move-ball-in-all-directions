@@ -9,7 +9,9 @@ const App = () => {
     left: x + "px",
     top: y + "px"
   });
-  const reset = () => {};
+  const reset = () => {
+    window.location.reload();
+  };
   const renderChoice = () => {
     if (renderBall) {
       return <div className="ball" style={ballPosition}></div>;
