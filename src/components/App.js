@@ -11,6 +11,7 @@ const App = () => {
     top: 0
   });
   const reset = () => {
+    setRenderBall(false);
     setBallPosition((prevState) => {
       return { ...prevState, left: 0, top: 0 };
     });
