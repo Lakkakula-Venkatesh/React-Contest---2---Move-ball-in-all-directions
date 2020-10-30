@@ -5,13 +5,15 @@ const App = () => {
   const [renderBall, setRenderBall] = useState(false);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  
-  let [ballPosition, setBallPosition] = React.useState({
+
+  const [ballPosition, setBallPosition] = React.useState({
     left: 0,
     top: 0
   });
   const reset = () => {
-    setBallPosition({left: 0, top: 0});
+    setBallPosition((prevState) => {
+      return { ...prevState, left: 0, top: 0 };
+    });
   };
   const renderChoice = () => {
     if (renderBall) {
@@ -23,37 +25,28 @@ const App = () => {
         </button>
       );
   };
-  
+
   const handleClick = function (event) {
-    // const {left, top} = posi;
     if (event.keyCode === 37) {
       //Left
-      ballPosition = {
-        left: ballPosition.left - 5,
-        top: ballPosition.top
-      }
-      setBallPosition(ballPosition);   
+      setBallPosition((prevState) => {
+        return { ...prevState, left: prevState.left - 5, top: prevState.top };
+      });
     } else if (event.keyCode === 38) {
       //Up
-      ballPosition = {
-        left: ballPosition.left,
-        top: ballPosition.top - 5
-      }
-      setBallPosition(ballPosition);
+      setBallPosition((prevState) => {
+        return { ...prevState, left: prevState.left, top: prevState.top - 5 };
+      });
     } else if (event.keyCode === 39) {
       //Right
-      ballPosition = {
-        left: ballPosition.left + 5,
-        top: ballPosition.top
-      }
-      setBallPosition(ballPosition);
+      setBallPosition((prevState) => {
+        return { ...prevState, left: prevState.left + 5, top: prevState.top };
+      });
     } else if (event.keyCode === 40) {
       //Down
-      ballPosition = {
-        left: ballPosition.left,
-        top: ballPosition.top + 5
-      }
-      setBallPosition(ballPosition);
+      setBallPosition((prevState) => {
+        return { ...prevState, left: prevState.left, top: prevState.top + 5 };
+      });
     }
   };
 
